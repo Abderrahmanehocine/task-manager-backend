@@ -116,7 +116,7 @@ task-manager-backend/
 #### POST `/auth/register`
 Register a new user.
 - **Body**: `{"username": "string", "email": "string", "password": "string", "full_name": "string"}`
-- **Response**: User details (ID, username, email, full_name)
+- **Response**: User details (ID, username, email, full_name, created_at)
 
 #### POST `/auth/login`
 Log in and receive a JWT token.
@@ -128,8 +128,8 @@ Log in and receive a JWT token.
 #### POST `/tasks/`
 Create a task (requires authentication).
 - **Headers**: `Authorization: Bearer <token>`
-- **Body**: `{"title": "string", "description": "string", "is_completed": false}`
-- **Response**: Task details
+- **Body**: `{"title": "string", "description": "string", "is_completed": false, "due_date": "YYYY-MM-DDTHH:MM:SS"}`
+- **Response**: Task details (including id, user_id, created_at, due_date)
 
 #### GET `/tasks/`
 List all tasks for the authenticated user.
@@ -144,7 +144,7 @@ Get a specific task by ID.
 #### PUT `/tasks/{task_id}`
 Update a task by ID.
 - **Headers**: `Authorization: Bearer <token>`
-- **Body**: `{"title": "string", "description": "string", "is_completed": boolean}`
+- **Body**: `{"title": "string", "description": "string", "is_completed": boolean, "due_date": "YYYY-MM-DDTHH:MM:SS"}`
 - **Response**: Updated task details
 
 #### DELETE `/tasks/{task_id}`
@@ -174,7 +174,7 @@ Copy the `access_token` from the response.
 curl -X POST "http://127.0.0.1:8000/tasks" \
   -H "Authorization: Bearer <token>" \
   -H "Content-Type: application/json" \
-  -d '{"title":"Test Task","description":"A test task"}'
+  -d '{"title":"Test Task","description":"A test task","is_completed":true,"due_date":"2025-08-01T12:00:00"}'
 ```
 
 ### List Tasks
