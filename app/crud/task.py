@@ -1,11 +1,17 @@
 from sqlalchemy.orm import Session
-from app.schemas.task import TaskCreate, TaskUpdate
 from app.models.task_model import Task
 from app.models.user_model import User
+from app.schemas.task import TaskCreate, TaskUpdate
 
 def create_task(db: Session, task: TaskCreate, user: User) -> Task:
-    """Create a new task for the user."""
-    db_task = Task(**task.dict(), user_id=user.id)
+    """Create a new task for the authenticated user."""
+    db_task = Task(
+        title=task.title,
+        description=task.description,
+        is_completed=task.is_completed,
+        due_date=task.due_date,
+        user_id=user.id
+    )
     db.add(db_task)
     db.commit()
     db.refresh(db_task)
@@ -21,7 +27,7 @@ def get_task(db: Session, task_id: int, user_id: int) -> Task | None:
 
 def update_task(db: Session, task_id: int, task_update: TaskUpdate, user_id: int) -> Task | None:
     """Update a task by ID, ensuring it belongs to the user."""
-    db_task = db.query(Task).filter(Task.id == task_id, Task.user_id == user_id).first()
+    db_task = get_task(db, task_id, user_id)
     if not db_task:
         return None
     for key, value in task_update.dict(exclude_unset=True).items():
@@ -32,7 +38,7 @@ def update_task(db: Session, task_id: int, task_update: TaskUpdate, user_id: int
 
 def delete_task(db: Session, task_id: int, user_id: int) -> bool:
     """Delete a task by ID, ensuring it belongs to the user."""
-    task = db.query(Task).filter(Task.id == task_id, Task.user_id == user_id).first()
+    task = get_task(db, task_id, user_id)
     if not task:
         return False
     db.delete(task)

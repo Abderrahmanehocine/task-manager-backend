@@ -23,5 +23,8 @@ async def read_root():
         "message": "Welcome to the Task Manager API.",
         "version": "1.0.0",
         "docs": "/docs",
-        "endpoints": {"auth": "/auth", "tasks": "/tasks"}
+        "endpoints": {
+            "auth": "/auth/register and /auth/login",
+            "tasks": "/tasks/ (create, read, update, delete tasks)"
+        }
     }

@@ -5,7 +5,7 @@ from datetime import datetime
 class TaskBase(BaseModel):
     title: str = Field(..., max_length=100)
     description: Optional[str] = Field(None, max_length=500)
-    completed: bool = False
+    is_completed: bool = False
 
 class TaskCreate(TaskBase):
     due_date: Optional[datetime] = None
@@ -13,7 +13,7 @@ class TaskCreate(TaskBase):
 class TaskUpdate(TaskBase):
     title: Optional[str] = Field(None, max_length=100)
     description: Optional[str] = Field(None, max_length=500)
-    completed: Optional[bool] = None
+    is_completed: Optional[bool] = None
     due_date: Optional[datetime] = None
 
 class TaskOut(TaskBase):
