@@ -4,7 +4,7 @@ A FastAPI-based backend for managing tasks with user authentication using JWT. T
 
 
 ## Table of Contents
-- [API Documentation](#API Documentation)
+- [API Documentation](#api-documentation)
 - [Features](#features)
 - [Tech Stack](#tech-stack)
 - [Project Structure](#project-structure)
