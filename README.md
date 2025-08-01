@@ -4,7 +4,7 @@ A FastAPI-based backend for managing tasks with user authentication using JWT. T
 
 
 ## Table of Contents
-
+- [API Documentation](#API Documentation)
 - [Features](#features)
 - [Tech Stack](#tech-stack)
 - [Project Structure](#project-structure)
@@ -13,6 +13,11 @@ A FastAPI-based backend for managing tasks with user authentication using JWT. T
 - [Example Usage](#example-usage)
 - [Contributing](#contributing)
 - [License](#license)
+
+## API Documentation
+- Swagger UI: `http://127.0.0.1:8000/docs`
+
+![Swagger UI Screenshot](images/swagger-ui-screenshot.png)
 
 ## Features
 
@@ -78,7 +83,7 @@ task-manager-backend/
 
 2. **Set Up Virtual Environment**:
    ```bash
-   python -m venv venv
+   python3 -m venv venv
    source venv/bin/activate  # On Windows: venv\Scripts\activate
    ```
 
