@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from app.core.database import engine, Base
 from app.routes.user_auth import router as auth_router
 from app.routes.task import router as task_router
+import uvicorn
 
 app = FastAPI(
     title="Task Manager API",
@@ -28,3 +29,6 @@ async def read_root():
             "tasks": "/tasks/ (create, read, update, delete tasks)"
         }
     }
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=10000)
