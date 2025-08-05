@@ -16,10 +16,10 @@ A FastAPI-based backend for managing tasks with user authentication using JWT. T
 - [License](#license)
 
 ## API Live
-- `https://task-manager-backend-ivis.onrender.com/`
+- https://task-manager-backend-ivis.onrender.com/
 
 ## API Documentation
-- Swagger UI: `https://task-manager-backend-ivis.onrender.com/docs`
+- Swagger UI: https://task-manager-backend-ivis.onrender.com/docs
 
 ![Swagger UI Screenshot](images/swagger-ui-screenshot.png)
 
